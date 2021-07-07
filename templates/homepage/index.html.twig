@@ -1,7 +1,112 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}AssoNuaire{% endblock %}
 
 {% block body %}
+    <div class="header">
+        <h1>Bienvenue sur AssoNuaire</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At commodi doloremque, ea eaque modi obcaecati
+            optio
+            quibusdam. Accusamus consequatur cupiditate iure libero magnam, mollitia obcaecati quaerat quia ratione rem
+            sequi.
+        </p>
+    </div>
+    <div class="map">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">MAP</h5>
+                </div>
+            </a>
+        </div>
+    </div>
 
+    <div class="search_bar">
+        <div class="form-group">
+            <label class="col-form-label mt-4" for="inputDefault">Recherche</label>
+            <input type="text" class="form-control" placeholder="Default input" id="inputDefault">
+        </div>
+    </div>
+
+    <div class="select_thematic">
+        <fieldset class="form-group">
+            <legend class="mt-4">Thématiques</legend>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Checked checkbox
+                </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="last_five">
+        <h2>Les dernières associations</h2>
+        <div class="card">
+            <div class="card mb-3">
+                <h3 class="card-header">Titre Asso</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200"
+                     aria-label="Placeholder: Image cap" focusable="false" role="img"
+                     preserveAspectRatio="xMidYMid slice"
+                     viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                    <rect width="100%" height="100%" fill="#868e96"></rect>
+                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image Asso</text>
+                </svg>
+                <div class="card-body">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Description
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                 data-bs-parent="#accordionExample" style="">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by default,
+                                    until
+                                    the collapse plugin adds the appropriate classes that we use to style each element.
+                                    These classes control the overall appearance, as well as the showing and hiding via
+                                    CSS
+                                    transitions. You can modify any of this with custom CSS or overriding our default
+                                    variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>,
+                                    though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Activités
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                 data-bs-parent="#accordionExample" style="">
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding
+                                    via CSS transitions. You can modify any of this with custom CSS or overriding our
+                                    default variables. It's also worth noting that just about any HTML can go within the
+                                    <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    Thematiques
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
