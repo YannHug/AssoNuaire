@@ -128,6 +128,7 @@ class Association
         $this->activities = new ArrayCollection();
         $this->accessibilities = new ArrayCollection();
         $this->favorite = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
 
