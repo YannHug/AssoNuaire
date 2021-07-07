@@ -1,0 +1,109 @@
+parameters:
+    assos:
+        - 'Poney Club'
+        - 'Kaméléon PSYCHÉDÉLIQUE'
+        - 'Unicorn Power'
+        - 'Les amis de Nicole'
+    thematic:
+        - 'Nature'
+        - 'Sport'
+        - 'Art'
+        - 'Social'
+    audience:
+        - 'Enfants'
+        - 'Adolescents'
+        - 'Adultes'
+        - 'Aînés'
+    activity:
+        - 'Danse'
+        - 'Pêche'
+        - 'Anciens combattants'
+        - 'Equitation'
+        - 'Karaté'
+        - 'Rugby'
+        - 'Foot'
+        - 'HipHop'
+        - 'Théâtre'
+        - 'Don du sang'
+    accessibility:
+        - 'Maladies Invalidantes'
+        - 'Handicap Moteur'
+        - 'Handicap Visuel'
+        - 'Handicap Auditif'
+        - 'Handicap Mental'
+        - 'Handicap Psychique'
+    pictures:
+        - 60d477c93ee20.jpg
+        - 60d477c93f5a5.jpg
+        - 60d477c93f5e8.jpg
+        - 60d477c93f67f.jpg
+        - 60d477c93f466.jpg
+        - 60d477c93f516.jpg
+        - 60d477c93f625.jpg
+        - 60d477fc67be2.jpg
+        - 60d477fc680d5.jpg
+        - 60d477fc681a1.jpg
+        - 60d477fc681f7.jpg
+        - 60d477fc6805d.jpg
+        - 60d477fc68138.jpg
+        - 60d478757c9d8.jpg
+        - 60d478757c33c.jpg
+        - 60d478757c909.jpg
+        - 60d478757c983.jpg
+
+App\Entity\Picture:
+    picture{1..16}:
+        name (unique): '<randomElement(<{pictures}>)>'
+        associations: '@association*'
+
+App\Entity\Thematic:
+    thematic{1..4}:
+        name (unique): '<randomElement(<{thematic}>)>'
+
+App\Entity\Audience:
+    audience{1..4}:
+        name (unique): '<randomElement(<{audience}>)>'
+
+App\Entity\Activity:
+    activity{1..10}:
+        name (unique): '<randomElement(<{activity}>)>'
+
+App\Entity\Accessibility:
+    accessibility{1..6}:
+        name (unique): '<randomElement(<{accessibility}>)>'
+
+App\Entity\User:
+    user0:
+        email: 'demo@demo.fr'
+        password: '\$argon2id\$v=19\$m=65536,t=4,p=1\$PhNm0nsjOJsBasNJ0zCSCQ\$9wROaVejS7dAzDmp9QelmvSBWgJL+34bT778YLfTem8'
+        roles: [ "ROLE_ADMIN" ]
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    user{1..5}:
+        email: '<email()>'
+        password: '<password()>'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        updatedAt: '<dateTimeBetween($createdAt, "now")>'
+
+App\Entity\Association:
+    association{1..4}:
+        name (unique): '<randomElement(<{assos}>)>'
+        description: '<text()>'
+        information: '<sentence(10)>'
+        url: '<url()>'
+        email: '<email()>'
+        phoneNumber: '<phoneNumber()>'
+        address: '<streetAddress()>'
+        postalCode: '<randomNumber(5, true)>'
+        city: '<city()>'
+        latitude: '<latitude(-90,90)>'
+        longitude: '<longitude(-180,180)>'
+        createdAt: '<dateTimeBetween("-4 years", "now")>'
+        updatedAt: '<dateTimeBetween($createdAt, "now")>'
+        favorite: '<numberBetween(1, 3)>x @user*'
+        thematics: '<numberBetween(1, 2)>x @thematic*'
+        accessibilities: '<numberBetween(0, 3)>x @accessibility*'
+        audiences: '<numberBetween(1, 3)>x @audience*'
+        activities: '<numberBetween(1, 3)>x @activity*'
+        founder: '@user*'
+        pictures: '<numberBetween(0, 2)>x @picture*'
