@@ -22,6 +22,12 @@ class Picture
      */
     private $name;
 
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * @ORM\ManyToOne(targetEntity=Association::class, inversedBy="pictures")
      */
