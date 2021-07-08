@@ -49,9 +49,9 @@
 
     <section class="last-five">
         <h2>Les dernières associations</h2>
-        {% for association in associations %}
-            <div class="card my-3">
-                <div class="card">
+        <div class="container-card">
+            {% for association in associations %}
+                <div class="card my-3">
                     <h3 class="card-header">{{ association.name }}</h3>
                     <img class="card-header__img px-1"
                          src="{{ asset('images/upload/association/' ~ association.pictures | first) }}"
@@ -97,14 +97,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer text-muted">
-                        {% for thematic in association.thematics %}
-                            {{ '#' ~ thematic.name }}
-                        {% endfor %}
+                        <div class="card-footer text-muted">
+                            {% for thematic in association.thematics %}
+                                {{ '#' ~ thematic.name }}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </section>
 {% endblock %}
