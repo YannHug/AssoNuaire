@@ -1,0 +1,36 @@
+.show,
+.first_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.show > img {
+    object-fit: contain;
+}
+
+.first_block__header {
+    max-width: 85%;
+}
+
+.address__item {
+    margin-left: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+    .first_block {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .first_block__header,
+    .first_block__main {
+        width: 100%;
+        margin: 0.5rem;
+    }
+
+    .second_block {
+        width: 100%;
+    }
+}
