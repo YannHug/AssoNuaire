@@ -4,23 +4,23 @@
 
 {% block body %}
     <article class="show">
+        <h2>{{ association.name }}</h2>
         <section class="first_block">
-            <h2>{{ association.name }}</h2>
             <header class="first_block__header">
                 {% if association.pictures is not empty %}
-                    <div id="carouselAssociation" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselAssociation" class="carousel slide" data-interval="false">
                         <div class="carousel-inner ">
                             <div class="carousel-item active">
                                 {# Le |first permet de mettre la première image en active #}
                                 <img src="{{ asset('images/upload/association/' ~ association.pictures | first) }}"
-                                     class="d-block img-fluid"
+                                     class="d-block img-fluid img-thumbnail"
                                      alt="{{ ("Photo de l'association " ~  association.name) }}">
                             </div>
                             {# Le |slice(1) permet de sauter la première image lors du premier tour de carousel #}
                             {% for image in association.pictures |slice(1) %}
                                 <div class="carousel-item">
                                     <img src="{{ asset('images/upload/association/' ~ image) }}"
-                                         class="d-block img-fluid"
+                                         class="d-block img-fluid img-thumbnail"
                                          alt="{{ ("Photo de l'association " ~  association.name) }}">
                                 </div>
                             {% endfor %}
@@ -36,9 +36,20 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
+                {% else %}
+                    <div id="carouselAssociation" class="carousel slide" data-interval="false">
+                        <div class="carousel-inner ">
+                            <div class="carousel-item active">
+                                {# Le |first permet de mettre la première image en active #}
+                                <img src="{{ asset('images/default.png' ) }}"
+                                     class="d-block img-fluid img-thumbnail"
+                                     alt="Pas de photo d'association, image par default">
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
             </header>
-            <main class="first_block__main mt-3">
+            <main class="first_block__main">
                 <div class="accordion" id="accordionAsso">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
@@ -106,30 +117,33 @@
                     </div>
                 </li>
             </ul>
-            <address>
+            <address class="address">
                 <ul class="list-group mt-3">
+                    <h3>Contactez nous :</h3>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Notre Email :
                         <div class="pill">
-                            <span><a href="mailto: {{ association.email }}">{{ association.email }}</a></span>
+                            <span class="address__item"><a
+                                        href="mailto: {{ association.email }}">{{ association.email }}</a></span>
                         </div>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Notre Adresse :
                         <div class="pill">
-                            <span>{{ association.address }} {{ association.postalCode }} {{ association.city }}</span>
+                            <span class="address__item">{{ association.address }} {{ association.postalCode }} {{ association.city }}</span>
                         </div>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Nous joindre :
                         <div class="pill">
-                            <span><a href="tel: {{ association.phoneNumber }}">{{ association.phoneNumber }}</a></span>
+                            <span class="address__item"><a
+                                        href="tel: {{ association.phoneNumber }}">{{ association.phoneNumber }}</a></span>
                         </div>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Notre site :
                         <div class="pill">
-                            <span><a href="{{ association.url }}">{{ association.url }}</a></span>
+                            <span class="address__item"><a href="{{ association.url }}">{{ association.url }}</a></span>
                         </div>
                     </li>
                 </ul>
