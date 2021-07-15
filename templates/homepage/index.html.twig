@@ -52,7 +52,9 @@
         <div class="container-card">
             {% for association in associations %}
                 <div class="card my-3">
-                    <h3 class="card-header">{{ association.name }}</h3>
+                    <h3 class="card-header"><a
+                                href="{{ path('association_read', {id: association.id}) }}">{{ association.name }} </a>
+                    </h3>
                     <img class="card-header__img px-1"
                          src="{{ asset('images/upload/association/' ~ association.pictures | first) }}"
                          alt="{{ association.name }}">
